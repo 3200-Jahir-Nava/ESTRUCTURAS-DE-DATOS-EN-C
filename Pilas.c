@@ -1,25 +1,27 @@
 #include <stdio.h>
+#include <stdlib.h>
+
 typedef struct nodo
 {
-    int dato;
-    struct nodo *siguiente;
+	int dato;
+	struct nodo *siguiente;
+
 }nodo;
 
 nodo *primero=NULL;
 
 void insertar();
 void mostrar();
-void buscar();
-void modificar();
 void eliminar();
+
 
 int main()
 {
 	int op,op2,i,nd;
 	do
 	{
-		printf("Implementacion de pila con memoria dinamica");
-		printf("\nSeleccione una opcion");
+		printf("Implementacion de pila con reserva de memoria dinmica");
+		printf("\nSeleccione una opercion");
 		printf("\n1-Ingresar datos");
 		printf("\n2-Mostrar pila");
 		printf("\n3-Eliminar");
@@ -30,28 +32,27 @@ int main()
 			case 1:
 			{
 				system("cls");
-				printf("Ingrese cuantos datos desea registrar:\t");
+				printf("\nCuantos datos desea registrar:\t");
 				scanf("%d",&nd);
 				for(i=0;i<nd;i++)
-                {
-                    printf("\nIngresa el dato %d:",i+1);
+				{
+					printf("\nIngrese el elemento %d:",i+1);
                     insertar();
-                }
-                printf("\n\nLos datos se almacenaron exitosamente");
-
+				}
+				printf("Los datos ingresados se almacenaron en la pila correctamente");
 			}
 			break;
 			case 2:
 			{
-				system("cls");
-				mostrar();
+			    system("cls");
+			    mostrar();
 
 			}
 			break;
 			case 3:
 			{
-				system("cls");
-                eliminar();
+			    system("cls");
+			    eliminar();
 
 			}
 			break;
@@ -59,18 +60,23 @@ int main()
 			printf("\nOpcion invalida");
 			break;
 		}
-		printf("\n\nIngrese el numero 10 si desea volver a ver le menu principal:\t");
+		printf("\nIngrese el numero 10 si desea volver a ver el menu pricipal:\t");
 		scanf("%d",&op2);
-		system("cls");
+        system("cls");
+
 	}while(op2==10);
+
 }
+
+
+
 
 void insertar()
 {
-    nodo *nuevo=(nodo*)malloc(sizeof(nodo));
-    scanf("%d",&nuevo->dato);
-    nuevo->siguiente=primero;
-    primero=nuevo;
+	nodo *nuevo=(nodo*)malloc(sizeof(nodo));
+	scanf("%d",&nuevo->dato);
+	nuevo->siguiente=primero;
+	primero=nuevo;
 }
 
 void mostrar()
@@ -83,28 +89,28 @@ void mostrar()
         {
             printf("%d\n\n",aux->dato);
             aux=aux->siguiente;
-
-
         }
-
-
     }else
     {
-        printf("La pila se encuentra vacia");
+        printf("\nLa pila esta vacia");
     }
 }
+
 void eliminar()
 {
     if(primero!=NULL)
     {
-        struct nodo *eli=primero;
+        nodo *eli=primero;
         primero=primero->siguiente;
         free(eli);
-        printf("\nEl ultimo elemento ingresado fue eliminado");
+        printf("\nEl ultimo elemento ingresado fue eliminado exitosamente");
+
     }else
     {
         system("cls");
-        printf("La pila esta vacia");
+        printf("No hay elementos para eliminar");
+
     }
+
 
 }
