@@ -100,7 +100,7 @@ void eliminar()
         struct nodo *eli=primero;
         primero=primero->siguiente;
         free(eli);
-        printf("\nEl ultimo elemetno ingresado fue eliminado");
+        printf("\nEl ultimo elemento ingresado fue eliminado");
     }else
     {
         system("cls");
